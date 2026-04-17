@@ -1,0 +1,47 @@
+Database Design for Rule Assignment System
+1. Overview
+
+The system is designed to manage hierarchical rule structures grouped under different groups. Each rule can be of type Condition or Decision, and rules are organized in a parent-child hierarchy with a maximum of three tiers.
+
+2. Core Tables
+a) Rules Table
+Stores all rules 
+Each rule has:
+Rule ID
+Rule Name
+Rule Type (CONDITION / DECISION)
+
+b) Groups Table
+Each group can contain multiple rule hierarchies
+
+c) Group Rule Assignments Table
+This is the main table that defines the hierarchy
+It maps:
+Rules to groups
+Parent-child relationships between rules
+3. Hierarchy Design
+A self-referencing column (parent_id) is used to model the hierarchy
+
+Supports:
+Multiple root nodes (Tier 1 rules)
+Nested child rules (Tier 2 and Tier 3)
+4. Tier Handling
+The tier column is used to represent hierarchy levels:
+Tier 1 → Root rules
+Tier 2 → Child rules
+Tier 3 → Leaf level rules
+
+5. Constraints Applied
+a) Foreign Keys
+Ensure referential integrity between:
+Groups
+Rules
+Parent-child relationships
+b) Unique Constraint
+UNIQUE (group_id, parent_id, rule_id)
+Prevents duplicate rule assignment under the same parent
+Allows rule reuse in different parts of the hierarchy
+c) Tier Constraint
+Ensures hierarchy does not exceed 3 levels
+
+
