@@ -45,3 +45,11 @@ c) Tier Constraint
 Ensures hierarchy does not exceed 3 levels
 
 
+Directory Structure:
+classes -> Assignment.php, Group.php, Rule.php
+Model classes -> AssignmentModel.php, GroupModel.php, RuleModel.php
+config -> autoload.php, Database.php
+view files -> index.php, assign_rule.php, create_group.php
+
+
+Tech-stack: Used php, Mysql and Jquery. Time did not permit to implement in VueJs
